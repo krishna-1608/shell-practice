@@ -9,4 +9,4 @@ echo "home dire : $HOME"
 echo "PID os this script : $$"
 sleep 50 &
 echo "PID os the last command background process is :$!"
-echo "script status: $?"
+echo "script status: $?" #if value is 0-script success  
