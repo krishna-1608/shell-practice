@@ -1,6 +1,6 @@
 #!/bin/bash
 
-START_TIME=$(datee +%s)
+START_TIME=$(date +%s)
 
 sleep 5 
 
