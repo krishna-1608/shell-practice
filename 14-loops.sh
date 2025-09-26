@@ -34,9 +34,9 @@ do
    #check the package is alredy installed 
    dnf list installed $package &>>$LOG_FILE
    if [ $? -ne 0 ]; then
-        dnf install $package -y &>>$LOG_FILE
+        dnf install $package -y &>>$LOG_FILE  
         VALIDATE $? "$package"
     else
-        echo -e "$packaage is alredy installed.. $Y SKIPPING $N"    
+        echo -e "$package is alredy installed.. $Y SKIPPING $N"    
     fi
 done
