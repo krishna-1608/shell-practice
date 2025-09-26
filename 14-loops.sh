@@ -32,7 +32,7 @@ VALIDATE(){   #functions recive inputs through arhs jut like shell script argume
 for package in $@
 do
    #check the package is alredy installed 
-   dnf list installed $package | tee -a $LOG_FILE
+   dnf list installed $package &>>$LOG_FILE
    if [ $? -ne 0 ]; then
         dnf install $package -y &>>$LOG_FILE
         VALIDATE $? "$package"
