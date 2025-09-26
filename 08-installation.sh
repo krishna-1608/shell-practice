@@ -9,7 +9,7 @@ fi
 
 dnf install mysql -y
 
-if [ $? -ne 0]; then
+if [ $? -ne 0 ]; then
     echo "error:: installing mysql is failuer"
     exit 1 # if it is failed stop script excution
 else
