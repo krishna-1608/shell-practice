@@ -20,7 +20,7 @@ fi
 
 VALIDATE(){   #functions recive inputs through arhs jut like shell script arguments  
     if [ $1 -ne 0 ]; then
-        echo -e " installing $2 is $R failuer $N"
+        echo -e " installing $2 is $R failuer $N" | tee -a $LOG_FILE  #tee command will read and print terminal and sends to logs 
         exit 1 # if it is failed stop script excution
     else
         echo -e "installing $2 is $G success $N"  | tee -a $LOG_FILE  
@@ -41,7 +41,7 @@ if [ $? -ne 0 ]; then
     dnf install nginx -y
     VALIDATE $? "nginx"
 else
-    echo -e "nginx is allredy exists.. $Y SKIPPING $N "
+    echo -e "nginx is allredy exists.. $Y SKIPPING $N " | tee -a $LOG_FILE
 fi
 
 dnf list installed python3 &>>$LOG_FILE
@@ -49,5 +49,5 @@ if [ $? -ne 0 ]; then
     dnf install python3 -y
     VALIDATE $? "Python3"
 else
-    echo -e "pyhton is allredy exists.. $Y SKIPPING $N"
+    echo -e "pyhton is allredy exists.. $Y SKIPPING $N" | tee -a $LOG_FILE
 fi
