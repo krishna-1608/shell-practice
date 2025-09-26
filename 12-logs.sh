@@ -7,8 +7,8 @@ Y="\e[33m"
 N="\e[0m"
 
 LOG_FOLDER="/var/log/shell-script"
-SCRIPT_FILE=$( echo $0 | cut -d '.' f1 )
-LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/12-logs.log
+SCRIPT_FILE=$( echo $0 | cut -d '.' -f1 )
+LOG_FILE="$LOGS_FOLDER/$SCRIPT_FILE.log" # /var/log/shell-script/12-logs.log
 
 mkdir -p $LOG_FOLDER
 echo "Script started executed at: $(date)"
@@ -18,12 +18,12 @@ if [ $userid -ne 0 ]; then
     exit 1 #failuers is other than 0 
 fi
 
-ALIDATE(){   #functions recive inputs through arhs jut like shell script arguments  
+VALIDATE(){   #functions recive inputs through arhs jut like shell script arguments  
     if [ $1 -ne 0 ]; then
         echo -e " installing $2 is $R failuer $N"
         exit 1 # if it is failed stop script excution
     else
-        echo -e "installing $2 is $G success $N"    
+        echo -e "installing $2 is $G success $N"  | tee -a $LOG_FILE  
     fi
 }
 
@@ -32,7 +32,7 @@ if [ $? -ne 0 ]; then
     dnf install mysql -y
     VALIDATE $? "MYSQL"
 else
-    echo -e "mySql already exists .. $Y SKIPPING $N "
+    echo -e "mySql already exists .. $Y SKIPPING $N " | tee -a $LOG_FILE  #append to log file
 
 fi
 
