@@ -22,7 +22,7 @@ VALIDATE(){   #functions recive inputs through arhs jut like shell script argume
 
 dnf list installed mysql
 if [ $? -ne 0 ]; then
-    dnf installed mysql -y
+    dnf install mysql -y
     VALIDATE $? "MYSQL"
 else
     echo -e "mySql already exists .. $Y SKIPPING $N "
