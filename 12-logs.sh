@@ -8,7 +8,7 @@ N="\e[0m"
 
 LOG_FOLDER="/var/log/shell-script"
 SCRIPT_FILE=$( echo $0 | cut -d '.' -f1 )
-LOG_FILE="$LOGS_FOLDER/$SCRIPT_FILE.log" # /var/log/shell-script/12-logs.log
+LOG_FILE="$LOG_FOLDER/$SCRIPT_FILE.log" # /var/log/shell-script/12-logs.log
 
 mkdir -p $LOG_FOLDER
 echo "Script started executed at: $(date)"
