@@ -33,6 +33,7 @@ for package in $@
 do
    #check the package is alredy installed 
    dnf list installed $package &>>$LOG_FILE
+   #if exist status is 0, alredy installed. -ne is 0 need to  install it
    if [ $? -ne 0 ]; then
         dnf install $package -y &>>$LOG_FILE  
         VALIDATE $? "$package"
